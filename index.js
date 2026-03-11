@@ -37,7 +37,7 @@ function showImages(images){
 
         var figure = document.createElement("figure")
         var img = document.createElement("img")
-        img.src = image.links.filter((links)=>links.rel==='preview')[0].href
+        img.src = image.links.filter((links)=>links.rel==='preview')[0]?.href ?? image.links[0].href;
         img.alt = image.data[0]['description']
         figure.appendChild(img)
 
