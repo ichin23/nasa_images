@@ -28,7 +28,9 @@ document.getElementById("searchForm").addEventListener("submit", async (event)=>
 function showImages(images){
     console.log(images)
     
-    imageDaySection.replaceChildren()
+    imagesSection.style.display = "grid"
+    imageDaySection.style.display = "none"
+
     imagesSection.replaceChildren()
 
     for (var image of images){
@@ -51,12 +53,12 @@ function showImages(images){
 
 async function showIOTD(){
     imageDaySection.replaceChildren()
-    imagesSection.replaceChildren()
+    imagesSection.style.display = "none"
+    imageDaySection.style.display = "block"
 
     imageDaySection.textContent = "Carregando..."
 
     const data = await fetch(`/api/imageDay`).then((response)=>response.json())
-
 
     console.log(data)
     
