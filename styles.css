@@ -1,0 +1,115 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    color: #f6f6f6;
+}
+
+body{
+    background-color: #272727;
+    overflow-x: hidden;
+    font-size: 18px;
+}
+
+main{
+    padding: 10px 30px;
+    width: 100vw;
+}
+
+form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 10px;
+}
+
+form input{
+    height: 40px;
+    width: 80%;
+    max-width: 400px;
+    padding: 8px 6px;
+    background-color: #535353;
+    border: 0;
+    border-radius: 12px;
+}
+
+form button{
+    background-color: #0a60b1;
+    border: 0;
+    padding: 0 16px;
+    border-radius: 20px;
+}
+
+#imageDaySection > figure{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+#imageDaySection>figure>img{
+    width: 90%;
+    height: auto;
+}
+
+#imageDaySection figcaption{
+    max-width: 1000px;
+}
+
+#imagesSection, #imageDaySection{
+    text-align: center;
+}
+
+#imagesSection{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+#imagesSection img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+#imagesSection figure{
+    position: relative;
+    transition: 0.2s;
+    cursor: pointer;
+}
+#imagesSection figcaption{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-height: 120%;
+    overflow-y: auto;
+    width: 100%;
+    display: none;
+    opacity: 0;
+    transform: 0.2s;
+}
+
+#imagesSection figure:hover{
+    transform: scale(1.2);
+    z-index: 10;
+}
+#imagesSection figure:hover figcaption{
+    opacity: 1;
+    display: block;
+    background-color: #272727;
+    padding: 12px;
+}
+
+@media (max-width: 998px){
+    #imagesSection{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 568px){
+    #imagesSection{
+        grid-template-columns: 1fr 1fr;
+    }
+}
