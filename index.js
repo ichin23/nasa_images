@@ -48,7 +48,7 @@ function showImages(images){
 
     images.forEach((image, index) => {
 
-        //if(!image.links) continue;
+        if(!image.links) return;
 
         var figure = document.createElement("figure")
         var img = document.createElement("img")
