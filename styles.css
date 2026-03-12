@@ -9,6 +9,7 @@ body{
     background-color: #272727;
     overflow-x: hidden;
     font-size: 18px;
+    position: relative;
 }
 
 main{
@@ -66,11 +67,12 @@ form button{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 10px;
+    justify-content: center;
 }
 
 #imagesSection img{
     width: 100%;
-    height: 300px;
+    aspect-ratio: 8/6;
     object-fit: cover;
 }
 
@@ -93,15 +95,8 @@ form button{
 
 #imagesSection figure:hover{
     transform: scale(1.2);
-    z-index: 10;
+    z-index: 5;
 }
-#imagesSection figure:hover figcaption{
-    opacity: 1;
-    display: block;
-    background-color: #272727;
-    padding: 12px;
-}
-
 @media (max-width: 998px){
     #imagesSection{
         grid-template-columns: 1fr 1fr 1fr;
@@ -111,5 +106,70 @@ form button{
 @media (max-width: 568px){
     #imagesSection{
         grid-template-columns: 1fr 1fr;
+    }
+}
+
+.bg-modal{
+    width: 100vw;
+    height: 100vh;
+    background-color: #2727278f;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    z-index: 10;
+}
+
+.modal{
+    width: 98vw;
+    max-width: 1000px;
+    max-height: 80vh;
+    background-color: #535353;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 10px;
+    border-radius: 12px;
+}
+
+.modal-img{
+    width: 40%;
+    height: auto;
+    object-fit: cover;
+}
+
+.modal-body{
+    width: 55%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.no-scroll{
+    overflow: hidden;
+}
+
+@media (max-width: 568px){
+    .bg-modal{
+        align-items: end;
+    }
+
+    .modal{
+        border-radius: 12px 12px 0 0;
+        width: 100vw;
+        flex-direction: column;
+        overflow: auto;
+        max-height: 90vh;
+    }
+
+    .modal-img{
+        width: 100%;
+    }
+
+    .modal-body{
+        width: 100%;
+        overflow: unset;
     }
 }
