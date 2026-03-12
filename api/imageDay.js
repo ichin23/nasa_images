@@ -7,5 +7,5 @@ export default async function handler(request, response){
     })
     const data = await fetch(`https://api.nasa.gov/planetary/apod?${params}`).then(async (response)=>await response.json())
 
-    return response.status(200).json(data)
+    return response.status(data.status).json(data)
 }
