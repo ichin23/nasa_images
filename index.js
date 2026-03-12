@@ -48,7 +48,7 @@ function showImages(images){
 
     images.forEach((image, index) => {
 
-        if(!image.links) return;
+        if(!image.links || image.links.filter((link)=>link.rel!="captions").length===0) return;
 
         var figure = document.createElement("figure")
         var img = document.createElement("img")
