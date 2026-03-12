@@ -97,6 +97,7 @@ form button{
     transform: scale(1.2);
     z-index: 5;
 }
+
 @media (max-width: 998px){
     #imagesSection{
         grid-template-columns: 1fr 1fr 1fr;
@@ -138,7 +139,7 @@ form button{
 .modal-img{
     width: 40%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .modal-body{
