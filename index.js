@@ -80,6 +80,7 @@ async function showIOTD(){
 
     const response = await fetch(`/api/imageDay`)
     
+    console.log(response.status)
     if(response.status!=200){
         imageDaySection.innerHTML="<h5>Ocorreu um erro ao buscar as informações</h5>"
         return;
