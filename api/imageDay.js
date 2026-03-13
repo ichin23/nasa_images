@@ -1,7 +1,8 @@
 
 
-export default async function handler(request, response) {
+module.exports = async function handler(request, response) {
     const api_key = process.env.NASA_API_KEY;
+
     const params = new URLSearchParams({
         "api_key": api_key
     })
