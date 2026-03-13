@@ -22,6 +22,7 @@ document.getElementById("searchForm").addEventListener("submit", async (event) =
     }
 
     imageDaySection.style.display="none"
+    imagesSection.style.display="flex"
     imagesSection.replaceChildren()
 
     imagesSection.textContent = "Carregando..."
