@@ -10,12 +10,33 @@
 <body>
     <main>
         <form id="searchForm">
-            <input type="search" name="query" id="queryInput" />
+            <input type="search" name="query" id="queryInput" placeholder="Digite um termo para buscar em inglês"/>
             <button type="submit">Buscar</button>
             <button type="button" id="refreshImageDay">Recarregar Imagem do dia</button>
         </form>
 
-        <section id="imageDaySection"></section>
+        <section id="imageDaySection">
+            <h4>Selecione um dia para ver a imagem dele</h4>
+            <div class="row">
+                <input type="date" name="date" id="dateInput"/>
+                <button onclick="getRandomDate()">Dia aleatório</button>
+            </div>
+            <div class="content">
+                <figure id="dayFigure">
+                    <h2 id="figureTitle"></h2>
+                    <a href="" target="_blank">
+                        <img src="" alt="" id="dayImage">
+                    </a>
+                    <video src="" id="dayVideo" controls autoplay></video>
+                    <figcaption id="imageCaption"></figcaption>
+                </figure>
+            </div>
+            
+            <div class="hide loading">Carregando...</div>
+
+            <div class="hide error"><h5>Ocorreu um erro ao buscar as informações</h5></div>
+
+        </section>
 
         <section id="imagesSection"></section>
     </main>

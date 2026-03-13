@@ -25,7 +25,7 @@ form{
     margin: 20px 10px;
 }
 
-form input{
+input{
     height: 40px;
     width: 80%;
     max-width: 400px;
@@ -35,14 +35,15 @@ form input{
     border-radius: 12px;
 }
 
-form button{
+button{
     background-color: #0a60b1;
     border: 0;
     padding: 0 16px;
-    border-radius: 20px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-#imageDaySection > figure{
+#imageDaySection figure{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,13 +51,24 @@ form button{
     gap: 15px;
 }
 
-#imageDaySection>figure>img{
-    width: 90%;
-    height: auto;
+#imageDaySection figure img,#imageDaySection figure video {
+    max-width: 90vw;
+    max-height: 70vh;
+    cursor: pointer;
 }
 
 #imageDaySection figcaption{
     max-width: 1000px;
+}
+
+
+#imageDaySection input{
+    margin: 20px 0;
+    width: 200px;
+}
+
+#imageDaySection button{
+    height: 40px;
 }
 
 #imagesSection, #imageDaySection{
@@ -146,6 +158,10 @@ form button{
     width: 55%;
     overflow-y: auto;
     overflow-x: hidden;
+}
+
+.hide{
+    display: none;
 }
 
 .no-scroll{
