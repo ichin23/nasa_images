@@ -22,7 +22,7 @@ form{
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin: 20px 10px;
+    padding: 20px 0;
 }
 
 input{
@@ -41,6 +41,7 @@ button{
     padding: 0 16px;
     border-radius: 8px;
     cursor: pointer;
+    height: 40px;
 }
 
 #imageDaySection figure{
@@ -65,10 +66,6 @@ button{
 #imageDaySection input{
     margin: 20px 0;
     width: 200px;
-}
-
-#imageDaySection button{
-    height: 40px;
 }
 
 #imagesSection, #imageDaySection{
@@ -115,6 +112,22 @@ button{
 @media (max-width: 998px){
     #imagesSection{
         grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 750px) {
+    form{
+        flex-direction: column;
+    }
+
+    form input{
+        width: 100%;
+        max-width: none;
+    }
+
+    form div{
+        display: flex;
+        justify-content: space-between;
     }
 }
 
@@ -171,6 +184,9 @@ button{
 }
 
 @media (max-width: 568px){
+
+    
+
     .bg-modal{
         align-items: end;
     }
