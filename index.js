@@ -3,17 +3,32 @@ const imageDaySection = document.getElementById("imageDaySection")
 const bgModal = document.querySelector(".bg-modal")
 
 const imageDayDateInput = imageDaySection.querySelector("#dateInput")
+
 imageDayDateInput.addEventListener("change", (event) => {
-    showIOTD(event.target.value)
+    window.location.search="?date="+event.target.value
+    
 })
 
-imageDayDateInput.valueAsDate = new Date()
+const params = new URLSearchParams(window.location.search);
+
+if(params.get("query")){
+    document.getElementById("queryInput").value = params.get("query")
+    processForm()
+}
+else if(params.get("date")){
+    imageDayDateInput.valueAsDate = new Date(params.get("date"))
+    showIOTD(imageDayDateInput.value)
+}
+else{   
+    imageDayDateInput.valueAsDate = new Date()
+    showIOTD(imageDayDateInput.value)
+}
+
+
+
 imageDayDateInput.max  = new Date().toISOString().split("T")[0]
 
-
-document.getElementById("searchForm").addEventListener("submit", async (event) => {
-    event.preventDefault();
-
+async function processForm() {
     const searchQuery = document.getElementById("queryInput").value
 
     if (!searchQuery || searchQuery.trim() === '') {
@@ -40,7 +55,7 @@ document.getElementById("searchForm").addEventListener("submit", async (event) =
     const data = await response.json()
 
     showImages(data.collection.items)
-})
+}
 
 function showImages(images) {
     console.log(images)
@@ -151,8 +166,6 @@ bgModal.addEventListener("click", (event) => {
     }
 })
 
-showIOTD()
-
 function getRandomDate(){
     const startDate = new Date("1995-06-16")
     const endDate = new Date()
@@ -160,12 +173,40 @@ function getRandomDate(){
     const randomDate = new Date(startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime()));
 
     const formatedDate = randomDate.toISOString().split("T")[0]
-    imageDaySection.querySelector("#dateInput").value = formatedDate
-    showIOTD(formatedDate)
+    window.location.search="?date="+formatedDate
+}
+
+async function shareImage(date){
+    if(!date){
+        const dateInput = imageDayDateInput.value
+
+        if (!dateInput || dateInput.trim() === '') {
+            throw Error("Nenhum valor passado")
+        }
+        date =  dateInput
+    }
+    const params = new URLSearchParams({
+        date: date
+    })
+
+    const link = `${document.location.origin}?${params}`;
+    await navigator.clipboard.writeText(link)
+    showAlert("Link copiado para a área de transferência")
+}
+
+function showAlert(content){
+    const alert = document.querySelector(".alert")
+    alert.classList.remove("hide")
+    alert.querySelector(".txt-content").textContent = content
+
+    setTimeout(()=>{
+        alert.classList.add("hide")
+    }, 3000)
 }
 
 document.getElementById("refreshImageDay").addEventListener("click", ()=>{  
     document.getElementById("queryInput").value = ""
-    imageDaySection.querySelector("#dateInput").valueAsDate = new Date()
-    showIOTD()
+
+    const formatedDate = new Date().toISOString().split("T")[0]
+    window.location.search="?date="+formatedDate
 })

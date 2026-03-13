@@ -208,3 +208,16 @@ button{
         overflow: unset;
     }
 }
+
+.alert{
+    width: 90vw;
+    max-width: 300px;
+    background-color: #4f923e;
+    color: white;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
